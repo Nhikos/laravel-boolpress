@@ -21,6 +21,7 @@
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Author</th>
+            <th scope="col">Categoria</th>
             <th scope="col">Content</th>
             <th scope="col">Actions</th>
         </tr>
@@ -31,6 +32,13 @@
                     <th scope="row">{{$post->id}}</th>
                     <td>{{substr($post->title,0,50).'...'}}</td>
                     <td>{{$post->author}}</td>
+                    <td>
+                        @if ($post->category)
+                            {{$post->category->name}}
+                        @else
+                            Nessuna categoria.
+                        @endif
+                    </td>
                     <td>{{substr($post->content,0,50).'...'}}</td>
                     <td><a href="{{route('admin.posts.show', $post)}}" class="btn btn-success">Mostra</a></td>
                     <td><a class="btn btn-warning" href="{{route('admin.posts.edit', $post)}}" >Modifica</a></td>

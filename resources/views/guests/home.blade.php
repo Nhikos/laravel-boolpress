@@ -7,10 +7,12 @@
         <title>Boolpress</title>
     </head>
     <body>
-        
-        <h1>Guest Page</h1>
+        <div id="root">
 
-        <div id="root"></div>
-         <script src="{{asset('js/front.js')}}"></script>
+
+        </div>
+         <script src="{{asset('js/front.js')}}">
+        
+        </script>
     </body>
     </html>

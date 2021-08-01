@@ -21,6 +21,26 @@
           @enderror
         </div>
         <div class="mb-3">
+          <label for="category" class="form-label">Categoria:</label>
+          <select class="form-control" name="category_id" id="category">
+            <option value="">Seleziona una categoria</option>
+            @foreach ($categories as $category)
+            <option value="{{$category->id}}"{{old('category_id', $post->category_id) == $category->id?'selected':''}} >{{$category->name}}</option>
+            @endforeach
+          </select>
+          @error('category_id')
+              <div class="alert alert-danger mt-1">{{ $message }}</div>
+          @enderror
+        </div>
+        <div class="mb-3">
+          <label class="form-label mb-2">Tags:</label>
+          <div class="form-check form-check-inline">
+            @foreach ($tags as $tag)
+              <input class="form-check-input" type="checkbox" id="tags" value={{$tag->id}} name="tags_id[]">
+              <label class="form-check-label mr-3" for="tags">{{$tag->name}}</label>   
+            @endforeach
+          </div>
+        <div class="mb-3">
             <textarea class="form-control" placeholder="Inserisci il contenuto" id="content" name="content" rows="10">{{old('content', $post->content)}}</textarea>
             @error('content')
               <div class="alert alert-danger">{{ $message }}</div>
